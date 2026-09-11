@@ -29,8 +29,10 @@ python -m http.server 8080
 
 ## Deploy
 
-- **Automático:** cada push a `main` despliega a Cloudflare Pages vía GitHub Actions (usa el secret `CLOUDFLARE_API_TOKEN` y la variable `CLOUDFLARE_ACCOUNT_ID`).
 - **Manual:** `npx wrangler pages deploy . --project-name=yopuedoserdigital`
+- **Dominios:** `yopuedoserdigital.com` y `www.yopuedoserdigital.com` (CNAME → `yopuedoserdigital.pages.dev`, proxied) configurados como custom domains del proyecto Pages.
+- **DNS:** la zona vive en Cloudflare. El registro MX/SPF del hosting de correo se conservó intacto; solo los registros web (A/AAAA apex/www) apuntan a Pages.
+- **Auto-deploy (opcional):** conectar el repo en Pages → Settings → Builds & deployments → Connect to Git, o vía GitHub Actions (secret `CLOUDFLARE_API_TOKEN` + variable `CLOUDFLARE_ACCOUNT_ID`).
 
 ## Personalizar
 
