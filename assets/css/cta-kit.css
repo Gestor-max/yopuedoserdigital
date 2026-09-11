@@ -1,0 +1,107 @@
+/* ============================================================
+   CTA Kit — Yo Puedo Ser Digital
+   Drop-in conversion layer: header pill, primary/secondary
+   buttons, card links and floating CTA.
+   ============================================================ */
+
+:root {
+  --cta-accent: #c9f24b;        /* primary accent */
+  --cta-accent-ink: #0b1120;    /* text on accent */
+  --cta-bg: #0b1120;            /* dark background */
+  --cta-text: #ffffff;
+  --cta-radius: 999px;
+}
+
+.cta-primary,
+.cta-secondary,
+.cta-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display, "Sora", sans-serif);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--cta-radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.cta-primary {
+  background: var(--cta-accent);
+  color: var(--cta-accent-ink);
+  padding: 16px 32px;
+  font-size: 16px;
+  box-shadow: 0 10px 30px rgba(201, 242, 75, 0.22);
+}
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(201, 242, 75, 0.32);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--cta-text);
+  padding: 15px 30px;
+  font-size: 16px;
+  border: 1.5px solid #3a4a6e;
+}
+.cta-secondary:hover {
+  border-color: var(--cta-accent);
+  color: var(--cta-accent);
+  transform: translateY(-2px);
+}
+
+.cta-header {
+  background: var(--cta-accent);
+  color: var(--cta-accent-ink);
+  padding: 9px 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.cta-header:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(201, 242, 75, 0.25); }
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cta-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cta-link:hover { text-decoration: underline; }
+
+.cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.cta-floating {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 9999;
+  padding: 13px 24px;
+  font-size: 15px;
+}
+
+/* Focus visibility for accessibility */
+.cta-primary:focus-visible,
+.cta-secondary:focus-visible,
+.cta-header:focus-visible,
+.cta-link:focus-visible {
+  outline: 3px solid rgba(201, 242, 75, 0.6);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-primary, .cta-secondary, .cta-header { transition: none; }
+  .cta-primary:hover, .cta-secondary:hover, .cta-header:hover { transform: none; }
+}
+
+@media (max-width: 480px) {
+  .cta-group { flex-direction: column; align-items: stretch; }
+  .cta-group .cta-primary, .cta-group .cta-secondary { width: 100%; }
+}
